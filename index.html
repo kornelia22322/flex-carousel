@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>...</title>
+        <style>
+        h2 {
+            color: #000;
+            font-size: 7em;
+            font-weight: normal;
+            margin: 0;
+            padding: 0.6em 0;
+            text-align: center;
+        }
+        #wrapper {
+            text-align: center;
+        }
+        #button-wrapper {
+            text-align: center;
+        }
+        #button-wrapper button {
+            display: inline-block;
+        }
+        #container {
+            overflow: hidden;
+            display: inline-flex;
+            width: 500px;
+        }
+        .item {
+            background: #f1f1f1;
+            flex: 1 0 33.33333%;
+        }
+        .item:nth-child(even) {
+            background: #d5d5d5;
+        }
+        </style>
+        <script>
+
+        </script>
+	</head>
+	<body>
+        <div id = "wrapper">
+            <div id = "container">
+                <div class = "item"><h2>1</h2></div>
+                <div class = "item"><h2>2</h2></div>
+                <div class = "item"><h2>3</h2></div>
+                <div class = "item"><h2>4</h2></div>
+                <div class = "item"><h2>5</h2></div>
+                <div class = "item"><h2>6</h2></div>
+                <div class = "item"><h2>7</h2></div>
+                <div class = "item"><h2>8</h2></div>
+                <div class = "item"><h2>9</h2></div>
+                <div class = "item"><h2>10</h2></div>
+            </div>
+        </div>
+        <div id = "button-wrapper">
+            <button>PREV</button>
+            <button>NEXT</button>
+        </div>
+	</body>
+</html>
