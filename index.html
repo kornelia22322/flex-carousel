@@ -15,47 +15,74 @@
         #wrapper {
             text-align: center;
         }
+        #fixed-container {
+            overflow: hidden;
+            width: 600px;
+            display: inline-block;
+        }
         #button-wrapper {
             text-align: center;
         }
         #button-wrapper button {
             display: inline-block;
         }
-        #container {
-            overflow: hidden;
+        .container {
             display: inline-flex;
-            width: 500px;
+            position: relative;
+            transform: translateX(-200px);
+        }
+        .is-set {
+            transform: none;
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
         .item {
             background: #f1f1f1;
-            flex: 1 0 33.33333%;
+            flex: 1 0 200px;
         }
         .item:nth-child(even) {
             background: #d5d5d5;
         }
         </style>
-        <script>
-
-        </script>
 	</head>
 	<body>
         <div id = "wrapper">
-            <div id = "container">
-                <div class = "item"><h2>1</h2></div>
-                <div class = "item"><h2>2</h2></div>
-                <div class = "item"><h2>3</h2></div>
-                <div class = "item"><h2>4</h2></div>
-                <div class = "item"><h2>5</h2></div>
-                <div class = "item"><h2>6</h2></div>
-                <div class = "item"><h2>7</h2></div>
-                <div class = "item"><h2>8</h2></div>
-                <div class = "item"><h2>9</h2></div>
-                <div class = "item"><h2>10</h2></div>
+            <div id = "fixed-container">
+            <div class="container is-set">
+                <div class = "item" style="order: 1;"><h2>1</h2></div>
+                <div class = "item" style="order: 2;"><h2>2</h2></div>
+                <div class = "item" style="order: 3;"><h2>3</h2></div>
+                <div class = "item" style="order: 4;"><h2>4</h2></div>
+                <div class = "item" style="order: 5;"><h2>5</h2></div>
+                <div class = "item" style="order: 6;"><h2>6</h2></div>
+                <div class = "item" style="order: 7;"><h2>7</h2></div>
+                <div class = "item" style="order: 8;"><h2>8</h2></div>
+                <div class = "item" style="order: 9;"><h2>9</h2></div>
+                <div class = "item is-ref" style="order: 10;"><h2>10</h2></div>
+            </div>
             </div>
         </div>
         <div id = "button-wrapper">
-            <button>PREV</button>
-            <button>NEXT</button>
+            <button id = "prev">PREV</button>
+            <button id = "next">NEXT</button>
         </div>
+
+        <script>
+        console.log(document.getElementById("next"))
+            document.getElementById("next").addEventListener("click", () => {
+                let i = 2;
+                Array.from(document.querySelectorAll(".item")).forEach((item) => {
+                    item.style.order = i;
+                    if(i == 11) {
+                        item.style.order = 1;
+                    }
+                    i++;
+                })
+                document.querySelector(".container").classList.remove("is-set");
+                setTimeout(function() {
+                    document.querySelector(".container").classList.add("is-set");
+                }, 0);
+            })
+
+        </script>
 	</body>
 </html>
