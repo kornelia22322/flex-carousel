@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>...</title>
+        <style>
+        h2 {
+            color: #000;
+            font-size: 7em;
+            font-weight: normal;
+            margin: 0;
+            padding: 0.6em 0;
+            text-align: center;
+        }
+        #wrapper {
+            text-align: center;
+        }
+        #fixed-container {
+            overflow: hidden;
+            width: 600px;
+            display: inline-block;
+        }
+        #button-wrapper {
+            text-align: center;
+        }
+        #button-wrapper button {
+            display: inline-block;
+        }
+        .container {
+            position: relative;
+            display: inline-flex;
+            width: 600px;
+        }
+        .item {
+            background: #f1f1f1;
+            position: absolute;
+            width: 200px;
+        }
+        .item:nth-child(even) {
+            background: #d5d5d5;
+        }
+        .move {
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .dummy {
+            visibility: hidden;
+        }
+        </style>
+	</head>
+	<body>
+        <div id = "wrapper">
+            <div id = "fixed-container">
+            <div class="container move">
+                <div class = "item"><h2>0</h2></div>
+                <div class = "item"><h2>1</h2></div>
+                <div class = "item"><h2>2</h2></div>
+                <div class = "item"><h2>3</h2></div>
+                <div class = "item"><h2>4</h2></div>
+                <div class = "item"><h2>5</h2></div>
+                <div class = "item"><h2>6</h2></div>
+                <div class = "item"><h2>7</h2></div>
+                <div class = "item"><h2>8</h2></div>
+                <div class = "item"><h2>9</h2></div>
+                <div class = "item"><h2>0</h2></div>
+            </div>
+            </div>
+        </div>
+        <div id = "button-wrapper">
+            <button id = "prev">PREV</button>
+            <button id = "next">NEXT</button>
+        </div>
+
+        <script>
+        let _dummy = document.querySelector(".item").cloneNode(true);
+        _dummy.classList.remove("item");
+        _dummy.classList.add("dummy");
+        _dummy.style.width = 0;
+        document.querySelector(".container").insertBefore(_dummy, document.querySelector(".container").firstChild);
+
+        Array.from(document.querySelectorAll(".item")).forEach((item, index) => {
+            item.style.transform = "translateX(" + 200 * index + "px)";
+        })
+
+        let current = 0;
+
+        document.getElementById("next").addEventListener("click", () => {
+            document.querySelector(".container").style.transform = "translateX(" + (current-200) + "px)";
+            current = current - 200;
+        })
+        document.getElementById("prev").addEventListener("click", () => {
+            document.querySelector(".container").style.transform = "translateX(" + (current+200) + "px)";
+            current = current + 200;
+        })
+
+        </script>
+	</body>
+</html>
